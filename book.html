@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Service Call – Dolan Plumbing Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0d2137;--navy-mid:#163352;--pipe:#e87c2b;--pipe-dark:#c4611a;--pipe-pale:rgba(232,124,43,0.10);--cream:#f7f5f0;--white:#ffffff;--slate:#4a5568;--muted:#718096;--border:#e2e8f0;--star:#f6ad55;--success:#276749;--r:10px;--rlg:16px;--shadow:0 2px 12px rgba(0,0,0,0.07);--shadow-md:0 6px 28px rgba(0,0,0,0.11);--max:1140px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--cream);color:var(--navy);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    h1{font-size:clamp(30px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.1}
+    h2{font-size:clamp(22px,3.5vw,38px);font-weight:800;letter-spacing:-0.8px;line-height:1.15}
+    h3{font-size:18px;font-weight:700}
+    h4{font-size:15px;font-weight:700}
+    p{line-height:1.7}
+    .label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pipe);margin-bottom:10px;display:block}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--r);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:all .15s;text-decoration:none;font-family:inherit;line-height:1}
+    .btn-primary{background:var(--pipe);color:#fff}.btn-primary:hover{background:var(--pipe-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,124,43,.35)}
+    .btn-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35)}.btn-white:hover{border-color:rgba(255,255,255,.75)}
+    .btn-outline{background:transparent;color:var(--navy);border:2px solid var(--border)}.btn-outline:hover{border-color:var(--navy)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 5%}
+    section{padding:76px 0}
+    .bg-white{background:var(--white)}
+    /* NAV */
+    .nav{background:var(--navy);position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:66px}
+    .nav-brand{display:flex;align-items:center;gap:11px;color:#fff}
+    .nav-mark{width:40px;height:40px;background:var(--pipe);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;color:#fff;flex-shrink:0}
+    .nav-name strong{display:block;font-size:15px;font-weight:700;color:#fff}
+    .nav-name small{font-size:11px;opacity:.55;font-weight:400;color:#fff}
+    .nav-menu{display:flex;align-items:center;gap:2px;list-style:none}
+    .nav-menu a{display:block;padding:7px 13px;border-radius:6px;font-size:14px;font-weight:500;color:rgba(255,255,255,.75);transition:all .15s}
+    .nav-menu a:hover,.nav-menu a.active{color:#fff;background:rgba(255,255,255,.10)}
+    .nav-menu a.active{font-weight:700}
+    .nav-cta a{background:var(--pipe)!important;color:#fff!important;font-weight:700!important;padding:8px 18px!important;border-radius:7px!important}
+    .nav-cta a:hover{background:var(--pipe-dark)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+    /* FOOTER */
+    .footer{background:var(--navy);color:rgba(255,255,255,.70);padding:60px 0 28px}
+    .fg{max-width:var(--max);margin:0 auto;padding:0 5%;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px}
+    .flogo{font-size:19px;font-weight:800;color:#fff;margin-bottom:10px}
+    .fabout{font-size:14px;line-height:1.7}
+    .fsocial{display:flex;gap:10px;margin-top:20px}
+    .fsocial a{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);transition:all .15s}
+    .fsocial a:hover{background:rgba(255,255,255,.16);color:#fff}
+    .fcol h4{font-size:12px;font-weight:700;color:#fff;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase}
+    .fcol ul{list-style:none}
+    .fcol li{margin-bottom:9px}
+    .fcol a{font-size:14px;color:rgba(255,255,255,.65);transition:color .15s}
+    .fcol a:hover{color:#fff}
+    .fbot{max-width:var(--max);margin:0 auto;padding:24px 5% 0;border-top:1px solid rgba(255,255,255,.10);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,.40)}
+    /* HERO */
+    .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(13,33,55,.96) 40%,rgba(13,33,55,.55) 100%);z-index:1}
+    .hero-body{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:88px 5% 96px}
+    .hero-body.short{padding:64px 5% 72px}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(232,124,43,.18);border:1px solid rgba(232,124,43,.38);color:#fcb97f;padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:22px}
+    .badge::before{content:'●';font-size:7px}
+    .hero h1{color:#fff;margin-bottom:18px;max-width:640px}
+    .hero h1 span{color:var(--pipe)}
+    .hero .sub{font-size:17px;opacity:.80;max-width:520px;margin-bottom:36px}
+    .hero-acts{display:flex;gap:14px;flex-wrap:wrap}
+    .hstats{display:flex;gap:40px;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.10)}
+    .hstat .n{font-size:28px;font-weight:800;color:var(--pipe)}
+    .hstat .l{font-size:12px;opacity:.60;margin-top:2px}
+    /* TRUST */
+    .trust{background:#fff;border-bottom:1px solid var(--border)}
+    .trust-in{max-width:var(--max);margin:0 auto;padding:0 5%;display:flex;overflow-x:auto}
+    .ti{display:flex;align-items:center;gap:8px;padding:15px 20px 15px 0;font-size:13px;font-weight:500;color:var(--slate);white-space:nowrap;border-right:1px solid var(--border);margin-right:20px}
+    .ti:last-child{border-right:none;margin-right:0}
+    /* REVIEWS */
+    .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+    .rev-card{background:#fff;border:1px solid var(--border);border-radius:var(--rlg);padding:26px;position:relative;transition:transform .18s,box-shadow .18s}
+    .rev-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .rev-card::before{content:'"';position:absolute;top:14px;right:20px;font-size:72px;line-height:1;color:var(--pipe);opacity:.07;font-family:Georgia,serif;pointer-events:none}
+    .rev-hd{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+    .rev-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+    .rev-name{font-size:15px;font-weight:700;color:var(--navy)}
+    .rev-badge{font-size:11px;color:var(--muted);margin-top:1px}
+    .rev-stars{color:var(--star);font-size:13px;letter-spacing:1px;margin-top:3px}
+    .rev-date{font-size:12px;color:var(--muted);margin-top:2px}
+    .rev-txt{font-size:14px;color:var(--slate);line-height:1.7}
+    .g-mark{margin-left:auto;flex-shrink:0;opacity:.65;padding-top:2px}
+    /* CARDS */
+    .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .svc-card{background:#fff;border:1px solid var(--border);border-radius:var(--rlg);padding:26px;transition:transform .18s,box-shadow .18s}
+    .svc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .svc-icon{font-size:28px;margin-bottom:12px}
+    .svc-card h3{font-size:15px;margin-bottom:8px}
+    .svc-card p{font-size:13px;color:var(--slate)}
+    /* SPLIT */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+    .split-img{border-radius:var(--rlg);overflow:hidden;box-shadow:var(--shadow-md)}
+    .split-img img{width:100%;height:420px;object-fit:cover}
+    /* CTA BAND */
+    .cta{background:var(--navy);padding:72px 0}
+    .cta-in{max-width:var(--max);margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .cta-in h2{color:#fff;margin-bottom:10px}
+    .cta-in p{font-size:16px;opacity:.75;max-width:500px}
+    .cta-btns{display:flex;gap:14px;flex-wrap:wrap;flex-shrink:0}
+    /* WHY CARDS */
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:44px}
+    .why-card{text-align:center;padding:30px 18px;background:#fff;border:1px solid var(--border);border-radius:var(--rlg);transition:transform .18s,box-shadow .18s}
+    .why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .why-icon{font-size:32px;margin-bottom:12px}
+    .why-card h3{font-size:15px;margin-bottom:8px}
+    .why-card p{font-size:13px;color:var(--slate)}
+    /* FORM */
+    .form-card{background:#fff;border:1px solid var(--border);border-radius:var(--rlg);padding:36px;box-shadow:var(--shadow-md)}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .fgrp{margin-bottom:18px}
+    .fgrp label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+    .fgrp input,.fgrp select,.fgrp textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:7px;font-size:15px;font-family:inherit;color:var(--navy);background:#fff;outline:none;transition:all .15s}
+    .fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:var(--pipe);box-shadow:0 0 0 3px rgba(232,124,43,.10)}
+    .fgrp input.err,.fgrp select.err{border-color:#e53e3e}
+    .fgrp textarea{resize:vertical;min-height:90px}
+    .sub-btn{width:100%;background:var(--pipe);color:#fff;border:none;padding:15px;border-radius:var(--r);font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;transition:all .15s;margin-top:6px}
+    .sub-btn:hover{background:var(--pipe-dark);transform:translateY(-1px)}
+    .sub-btn:disabled{background:#b0b8c1;cursor:not-allowed;transform:none}
+    .fnote{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+    /* SUCCESS */
+    .success-box{display:none;text-align:center;padding:40px 20px}
+    .success-icon{width:68px;height:68px;background:#ebf8f1;border:2px solid #c6f6d5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 20px}
+    .success-box h3{font-size:22px;font-weight:800;color:var(--success);margin-bottom:10px}
+    /* SIDEBAR */
+    .sdb-block{background:#fff;border:1px solid var(--border);border-radius:var(--rlg);padding:22px;margin-bottom:18px}
+    .sdb-block h3{font-size:15px;font-weight:700;margin-bottom:14px}
+    .c-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;color:var(--navy);transition:all .15s}
+    .c-row:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+    .c-row:last-child{margin-bottom:0}
+    .c-ic{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .ic-call{background:rgba(232,124,43,.12)}.ic-mail{background:rgba(13,33,55,.07)}.ic-map{background:rgba(34,197,94,.12)}
+    .c-lbl{font-size:11px;color:var(--muted)}.c-val{font-size:14px;font-weight:700}
+    .hours-tbl{width:100%;font-size:13px;border-collapse:collapse}
+    .hours-tbl td{padding:5px 0}
+    .hours-tbl .hday{color:var(--slate)}
+    .hours-tbl tr.today td{color:var(--pipe);font-weight:700}
+    .hours-tbl td:last-child{font-weight:600;text-align:right}
+    /* GALLERY */
+    .masonry{columns:3;column-gap:14px;margin-top:36px}
+    .mitem{break-inside:avoid;margin-bottom:14px;border-radius:var(--r);overflow:hidden;position:relative}
+    .mitem img{width:100%;display:block;transition:transform .3s}
+    .mitem:hover img{transform:scale(1.04)}
+    .mcap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,33,55,.88),transparent);color:#fff;padding:28px 14px 12px;font-size:13px;opacity:0;transition:opacity .2s}
+    .mitem:hover .mcap{opacity:1}
+    /* PILLS */
+    .pill{display:inline-block;background:#fff;border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:500;margin:4px 4px 0 0}
+    /* STEPS */
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));background:#fff;border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden;margin-top:44px}
+    .step{padding:26px 22px;border-right:1px solid var(--border)}
+    .step:last-child{border-right:none}
+    .step-n{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--pipe);text-transform:uppercase;margin-bottom:10px}
+    .step h4{margin-bottom:8px}
+    .step p{font-size:13px;color:var(--slate)}
+    /* TAG */
+    .tag{display:inline-block;background:var(--pipe-pale);color:var(--pipe-dark);font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;margin:3px 3px 0 0}
+    /* RATING */
+    .rat-box{background:#fff;border:1px solid var(--border);border-radius:var(--rlg);padding:30px 36px;display:flex;align-items:center;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+    .rat-num{font-size:60px;font-weight:800;color:var(--navy);line-height:1;text-align:center}
+    .rat-stars{font-size:22px;color:var(--star);letter-spacing:2px;margin:6px 0 4px}
+    .rat-sub{font-size:13px;color:var(--muted)}
+    .rat-div{width:1px;height:70px;background:var(--border);flex-shrink:0}
+    .brow{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px}
+    .blbl{width:36px;font-weight:600;flex-shrink:0}
+    .btrack{flex:1;height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+    .bfill{height:100%;background:var(--star);border-radius:99px}
+    .bpct{width:32px;text-align:right;font-size:12px;color:var(--muted)}
+    /* LEAVE REVIEW */
+    .lrev{background:var(--navy);color:#fff;border-radius:var(--rlg);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:48px}
+    .lrev h3{color:#fff;font-size:20px;margin-bottom:8px}
+    .lrev p{opacity:.75;font-size:15px;max-width:440px}
+    /* RESPONSIVE */
+    @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:28px}.split{grid-template-columns:1fr;gap:32px}.split-img img{height:260px}}
+    @media(max-width:640px){
+      .nav-menu{display:none;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:var(--navy);padding:12px 5% 20px;gap:4px;z-index:100}
+      .nav-menu.open{display:flex}.hamburger{display:flex}
+      .fg{grid-template-columns:1fr}.frow{grid-template-columns:1fr}
+      .masonry{columns:1}.hstats{gap:22px}
+      .hero-acts{flex-direction:column}.hero-acts .btn{justify-content:center}
+      .steps{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--border)}.step:last-child{border-bottom:none}
+      .cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}
+      .rat-box{padding:20px;gap:20px}.rat-div{display:none}
+    }
+    @media(max-width:480px){.masonry{columns:1}}
+  </style>
+  <style>
+    .book-layout{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:start;padding:72px 5%;max-width:var(--max);margin:0 auto}
+    @media(max-width:860px){.book-layout{grid-template-columns:1fr;gap:32px}}
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-mark">DP</div>
+      <div class="nav-name">
+        <strong>Dolan Plumbing Solutions</strong>
+        <small>Worcester, MA · (774) 239-7470</small>
+      </div>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li class="nav-cta"><a href="book.html">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-body short">
+    <div class="badge">Online Booking — No Phone Tag</div>
+    <h1>Book a service call<br><span>in 60 seconds.</span></h1>
+    <p class="sub">Fill out the form and Ryan responds same day. No hold music, no email threads — just a real person getting back to you fast.</p>
+  </div>
+</section>
+
+<div style="background:var(--cream);">
+  <div class="book-layout">
+
+    <!-- FORM -->
+    <div>
+      <div class="form-card" id="form-wrap">
+        <div style="font-size:22px;font-weight:800;margin-bottom:6px;">Service Request</div>
+        <div style="font-size:14px;color:var(--muted);margin-bottom:28px;">Ryan typically responds same day — often within the hour.</div>
+
+        <!--
+          HOW TO ACTIVATE THIS FORM:
+          1. Go to https://formspree.io and create a FREE account (takes 2 min)
+          2. Create a new form — you'll get an ID like: xpznqkrb
+          3. Replace "YOUR_FORM_ID" below with your actual ID
+          4. Re-upload this file to GitHub — done!
+        -->
+        <form id="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="frow">
+            <div class="fgrp"><label>First Name *</label><input type="text" name="first_name" placeholder="Jane" required autocomplete="given-name"></div>
+            <div class="fgrp"><label>Last Name *</label><input type="text" name="last_name" placeholder="Smith" required autocomplete="family-name"></div>
+          </div>
+          <div class="fgrp"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(508) 555-0100" required autocomplete="tel"></div>
+          <div class="fgrp"><label>Email Address</label><input type="email" name="email" placeholder="jane@email.com" autocomplete="email"></div>
+          <div class="fgrp"><label>Service Address *</label><input type="text" name="address" placeholder="123 Main St, Worcester, MA" required></div>
+          <div class="fgrp">
+            <label>Type of Issue *</label>
+            <select name="service_type" required>
+              <option value="">Select the issue…</option>
+              <option>Water Heater (repair or replace)</option>
+              <option>Toilet Repair or Replacement</option>
+              <option>Faucet or Fixture Repair</option>
+              <option>Shower / Tub Valve</option>
+              <option>Drain Cleaning</option>
+              <option>Water Line or Pressure Issue</option>
+              <option>Active Leak (urgent)</option>
+              <option>No Water / Emergency</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="fgrp">
+            <label>Best time to reach you</label>
+            <select name="preferred_time">
+              <option>Anytime works</option>
+              <option>Morning (7am – Noon)</option>
+              <option>Afternoon (Noon – 5pm)</option>
+              <option>Evening (5pm – 8pm)</option>
+            </select>
+          </div>
+          <div class="fgrp"><label>Describe the problem</label><textarea name="description" placeholder="Tell Ryan what's going on. Any detail helps — age of the unit, when it started, what you've tried…"></textarea></div>
+          <input type="text" name="_gotcha" style="display:none">
+          <input type="hidden" name="_subject" value="New Service Request — Dolan Plumbing">
+          <button type="submit" class="sub-btn" id="sub-btn">Send Service Request →</button>
+          <div class="fnote">No payment until work is complete. Upfront quotes, always.</div>
+        </form>
+      </div>
+
+      <div class="success-box" id="success-box">
+        <div class="success-icon">✅</div>
+        <h3>Request Sent!</h3>
+        <p id="success-msg" style="color:var(--slate);">Ryan got your request and will reach out shortly to confirm your appointment.</p>
+        <div style="margin-top:22px;padding:16px;background:var(--cream);border-radius:var(--r);font-size:14px;color:var(--slate);">Need Ryan right now?<br><a href="tel:7742397470" style="color:var(--pipe);font-weight:700;font-size:16px;">(774) 239-7470</a></div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="sdb-block">
+        <h3>Reach Ryan directly</h3>
+        <a href="tel:7742397470" class="c-row"><div class="c-ic ic-call">📞</div><div><div class="c-lbl">Call or Text</div><div class="c-val">(774) 239-7470</div></div></a>
+        <a href="mailto:ryan@dolanplumbing.co" class="c-row"><div class="c-ic ic-mail">✉️</div><div><div class="c-lbl">Email</div><div class="c-val">ryan@dolanplumbing.co</div></div></a>
+        <a href="https://www.google.com/maps/search/Worcester+MA" target="_blank" rel="noopener" class="c-row"><div class="c-ic ic-map">📍</div><div><div class="c-lbl">Based in</div><div class="c-val">Worcester, MA</div></div></a>
+      </div>
+
+      <div class="sdb-block">
+        <h3>Business Hours</h3>
+        <table class="hours-tbl">
+          <tr><td class="hday">Monday</td><td>7:00am – 6:00pm</td></tr>
+          <tr><td class="hday">Tuesday</td><td>7:00am – 6:00pm</td></tr>
+          <tr><td class="hday">Wednesday</td><td>7:00am – 6:00pm</td></tr>
+          <tr><td class="hday">Thursday</td><td>7:00am – 6:00pm</td></tr>
+          <tr><td class="hday">Friday</td><td>7:00am – 6:00pm</td></tr>
+          <tr><td class="hday">Saturday</td><td>8:00am – 3:00pm</td></tr>
+          <tr><td class="hday">Sunday</td><td>Emergency Only</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Emergency calls outside hours — text first and Ryan will respond as soon as possible.</p>
+      </div>
+
+      <div style="background:var(--navy);border-radius:var(--rlg);padding:20px;color:#fff;font-size:14px;line-height:2;">
+        <div style="font-size:12px;opacity:.5;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Why book with Ryan</div>
+        ✅ Licensed journeyman plumber<br>
+        ✅ Owner on every single job<br>
+        ✅ Upfront quote before any work<br>
+        ✅ Same-day response, most days<br>
+        ✅ No subcontractors, ever
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var form = document.getElementById('booking-form');
+  var wrap = document.getElementById('form-wrap');
+  var success = document.getElementById('success-box');
+  var btn = document.getElementById('sub-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(el) {
+      if (!el.value.trim()) { el.classList.add('err'); valid = false; el.addEventListener('input', function(){ el.classList.remove('err'); }, {once:true}); }
+    });
+    if (!valid) return;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      var res = await fetch(form.action, { method:'POST', body: new FormData(form), headers:{'Accept':'application/json'} });
+      if (res.ok) {
+        wrap.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.disabled = false; btn.textContent = 'Send Service Request →';
+        alert('Something went wrong — please call Ryan at (774) 239-7470.');
+      }
+    } catch(err) {
+      btn.disabled = false; btn.textContent = 'Send Service Request →';
+      alert('Network error — please call (774) 239-7470 or email ryan@dolanplumbing.co.');
+    }
+  });
+</script>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="fg">
+    <div>
+      <div class="flogo">Dolan Plumbing Solutions</div>
+      <p class="fabout">Owner-operated plumbing &amp; heating in Worcester, MA. When you call, you talk directly to Ryan — the licensed journeyman doing your job start to finish.</p>
+      <div class="fsocial">
+        <a href="https://www.facebook.com/profile.php?id=61572759305078" target="_blank" rel="noopener">f</a>
+        <a href="https://www.instagram.com/dolanplumbingsolutions/" target="_blank" rel="noopener">ig</a>
+        <a href="https://www.google.com/maps/search/Dolan+Plumbing+Solutions+Worcester+MA" target="_blank" rel="noopener">G</a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Water Heaters</a></li>
+        <li><a href="services.html">Toilet Repair</a></li>
+        <li><a href="services.html">Faucets &amp; Fixtures</a></li>
+        <li><a href="services.html">Drain Cleaning</a></li>
+        <li><a href="services.html">Emergency Calls</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Ryan</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="book.html">Book a Call</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:7742397470">(774) 239-7470</a></li>
+        <li><a href="mailto:ryan@dolanplumbing.co">ryan@dolanplumbing.co</a></li>
+        <li><a href="https://www.google.com/maps/search/Worcester+MA" target="_blank" rel="noopener">Worcester, MA</a></li>
+        <li style="margin-top:10px;color:rgba(255,255,255,.35);font-size:13px;">Mon–Fri 7am–6pm<br>Sat 8am–3pm · Emergency 24/7</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Dolan Plumbing Solutions · All rights reserved</span>
+    <span>MA Licensed Journeyman Plumber · Fully Insured</span>
+  </div>
+</footer>
+<script>
+  // Active nav
+  var pg = location.pathname.split('/').pop()||'index.html';
+  document.querySelectorAll('.nav-menu a').forEach(function(a){
+    if(a.getAttribute('href')===pg) a.classList.add('active');
+  });
+  // Hamburger
+  var hbg=document.getElementById('hamburger'),menu=document.getElementById('navMenu');
+  if(hbg&&menu){
+    hbg.addEventListener('click',function(){menu.classList.toggle('open')});
+    document.addEventListener('click',function(e){if(!hbg.contains(e.target)&&!menu.contains(e.target))menu.classList.remove('open')});
+  }
+  // Today's hours highlight
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var today=days[new Date().getDay()];
+  document.querySelectorAll('.hday').forEach(function(td){
+    if(td.textContent.trim()===today) td.closest('tr').classList.add('today');
+  });
+</script>
+</body></html>
